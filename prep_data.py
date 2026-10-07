@@ -12,6 +12,8 @@ df = statcast(start_dt="2025-03-27", end_dt="2025-09-28")
 
 # Keep fastballs only: four-seam (FF), sinker (SI), two-seam (FT)
 df = df[df["pitch_type"].isin(["FF", "SI", "FT"])].copy()
+# A few pitches are missing movement data; drop them so grouping works
+df = df.dropna(subset=["pfx_x", "pfx_z"])
 
 # Movement in inches (Statcast stores feet)
 df["ivb_in"] = df["pfx_z"] * 12
