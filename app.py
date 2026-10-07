@@ -8,7 +8,7 @@ st.caption("High-ride four-seamers vs. other four-seamers vs. sinkers/two-seamer
 
 @st.cache_data
 def load():
-    return pd.read_csv("fastballs.csv")
+    return pd.read_csv("fastballs.csv.gz")
 
 
 df = load()

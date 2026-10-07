@@ -39,5 +39,6 @@ df["strikeout"] = df["events"].isin(["strikeout", "strikeout_double_play"]).asty
 cols = ["player_name", "pitch_type", "group", "stand", "release_speed",
         "ivb_in", "hb_in", "plate_x", "plate_z", "balls", "strikes",
         "swing", "whiff", "out_of_zone", "chase", "pa_end", "strikeout"]
-df[cols].to_csv("fastballs.csv", index=False)
-print(f"Saved {len(df):,} pitches to fastballs.csv")
+# Compressed so it fits GitHub's 25 MB browser-upload limit
+df[cols].to_csv("fastballs.csv.gz", index=False, compression="gzip")
+print(f"Saved {len(df):,} pitches to fastballs.csv.gz")
